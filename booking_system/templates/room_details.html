@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Room Details</title>
+</head>
+<body>
+    <h1>Room {{room.name}}:</h1>
+        <p>Capacity: {{room.capacity}}</p>
+        <p>Projector's availability: {{room.projector}}</p>
+    <a href = '/room/modify/{{room.id}}'><input type="submit" value="Edit"></a>
+    <a href = '/room/delete/{{room.id}}'><input type="submit" value="Delete"></a>
+    <a href = '/reservation/{{room.id}}'><input type="submit" value="Book"></a>
+
+    <h3>Already booked for:</h3>
+        <ul>{% for reservation in reservations%}</ul>
+            <li>{{reservation.date}}</li>
+        {% empty %}
+            <li>No reservation has been made so far</li>
+        {% endfor %}
+</body>
+</html>

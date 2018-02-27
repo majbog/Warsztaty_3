@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search Room</title>
+</head>
+<body>
+    <div>
+        <h3> Want to add a Room?</h3>
+        <a href="/room/new"><input type="submit" value="Add Room"></a>
+        <h3> Go back to the main page</h3>
+        <a href="/main"><input type="submit" value="Main page"></a>
+    </div>
+    <div>
+    <h1>Looking for a Room to book?</h1>
+        <form action="#" method="GET">
+            {% csrf_token %}
+            <label>Name:
+                <input type="text" name="name">
+            </label>
+            <label>Room Capacity:
+                <input type="number" name="capacity">
+            </label>
+            <label>Minimum of amount of people
+                <input type ="number" name="min_capacity">
+            </label>
+            <label>Available on:
+                <input type="date" placeholder="YYYY-MM-DD" name="available">
+            </label>
+            <label>Projector availability
+                <input type="checkbox" name="projector">
+            </label>
+            <input type="submit" value="Search!">
+        </form>
+    </div>
+    <div>
+        <h2>Here's what we've got so far:</h2>
+        <ul>
+            {% for room in rooms%}
+            <li><a href="/room/{{room.id}}">{{room.name}}</a></li>
+            {% empty %}
+            <p>Sorry, there's no such room</p>
+            {% endfor %}
+        </ul>
+    </div>
+
+</body>
+</html>

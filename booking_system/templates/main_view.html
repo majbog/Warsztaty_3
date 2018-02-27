@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Main View of the Booking System</title>
+</head>
+<body>
+    <div>
+        <h1>Welcome to our Booking System</h1><br>
+        <a href="/room/new"><input type="submit" value="Add new room"></a>
+        <a href="/search"><input type="submit" value="Looking for a room?"> </a>
+    <div>
+        <h2>Rooms:</h2><br>
+        {% for room in rooms %}
+            <h4>Name: {{ room.name }}</h4>
+                <p>Capacity: {{ room.capacity }}</p>
+                <p>Projector available: {{ room.projector }}</p>
+            <a href="/room/modify/{{room.id}}"><input type="submit" value="Edit"></a>
+            <a href="/room/delete/{{room.id}}"><input type="submit" value="Delete"></a>
+            <a href="/reservation/{{room.id}}"><input type="submit" value="Book"></a>
+            <a href="/room/{{room.id}}"><input type="submit" value="Details"></a>
+        {% empty %}
+            <p>Sorry, my dear, no room to be displayed at the moment</p>
+        {% endfor %}
+    </div>
+</body>
+</html>
